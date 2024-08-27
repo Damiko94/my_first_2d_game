@@ -42,38 +42,38 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     @Override
-//    public void run() {
-//
-//        double drawInterval = 1000000000/FPS;
-//        double nextDrawTime = System.nanoTime() + drawInterval;
-//
-//        while (gameThread != null) {
-//
-//            // System.out.println("The game loop is running");
-//
-//            // 1 UPDATE: update information such as character positions
-//            update();
-//            // 2 DRAW: draw the screen with the updated information
-//            repaint();
-//
-//            try {
-//                double remainingTime = nextDrawTime - System.nanoTime();
-//                remainingTime = remainingTime/1000000;
-//
-//                if(remainingTime < 0) {
-//                    remainingTime = 0;
-//                }
-//
-//                Thread.sleep((long) remainingTime);
-//
-//                nextDrawTime += drawInterval;
-//
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//    }
+    public void run() {
+
+        double drawInterval = 1000000000/FPS;
+        double nextDrawTime = System.nanoTime() + drawInterval;
+
+        while (gameThread != null) {
+
+            // System.out.println("The game loop is running");
+
+            // 1 UPDATE: update information such as character positions
+            update();
+            // 2 DRAW: draw the screen with the updated information
+            repaint();
+
+            try {
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime/1000000;
+
+                if(remainingTime < 0) {
+                    remainingTime = 0;
+                }
+
+                Thread.sleep((long) remainingTime);
+
+                nextDrawTime += drawInterval;
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
     public void update() {
 
         if(keyH.upPressed) {
